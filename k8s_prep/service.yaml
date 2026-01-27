@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: web
+  namespace: demo
+  labels:
+    app: web
+spec:
+  type: ClusterIP  # Internal only, Ingress handles external
+
+  selector:
+    app: web  # Route to pods with label app=web
+
+  ports:
+  - name: http
+    port: 80        # Service port
+    targetPort: 80  # Container port
+    protocol: TCP
+
+  sessionAffinity: None

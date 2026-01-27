@@ -1,0 +1,27 @@
+# kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.9.4/deploy/static/provider/cloud/deploy.yaml
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: web
+  namespace: demo
+  annotations:
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+
+  labels:
+    app: web
+
+spec:
+  ingressClassName: nginx
+  rules:
+  # Route localhost requests to our service
+  - host: localhost
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: web
+            port:
+              number: 80

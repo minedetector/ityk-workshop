@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docker Compose Watch Demo</title>
+    <style>
+        :root {
+            --color-primary: #0e16f6;
+            --color-primary-hover: #2c5282;
+            --color-bg: #f7fafc;
+            --color-text: #1a202c;
+            --color-border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-hover));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .demo-section {
+            background: white;
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .demo-section h2 {
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .code-block {
+            background-color: #2d3748;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #22863a;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: var(--color-primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: background-color 0.2s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .button:hover {
+            background-color: var(--color-primary-hover);
+        }
+
+        .status {
+            display: inline-block;
+            background-color: #dcfce7;
+            color: #166534;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: 500;
+            margin: 1rem 0;
+        }
+
+        .file-tree {
+            background-color: #f7fafc;
+            border-left: 3px solid var(--color-primary);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+            font-family: monospace;
+            white-space: pre-line;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #718096;
+            border-top: 1px solid var(--color-border);
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🐳 Docker Compose Watch Demo</h1>
+        <p>Real-time development with nginx - watch changes instantly</p>
+    </header>
+
+    <div class="container">
+        <div class="demo-section">
+            <h2>Quick Start Guide</h2>
+            <p>This is a complete example project demonstrating Docker Compose Watch with nginx for your microservices team.</p>
+            <div class="status">✓ Hot-reload enabled - Edit HTML/CSS and see changes instantly</div>
+
+            <h3 style="margin-top: 1.5rem; color: #2d3748;">Project Structure</h3>
+            <div class="file-tree">project/
+├── docker-compose.yml
+├── Dockerfile
+├── html/
+└   └ index.html (← Edit this file!)</div>
+        </div>
+
+        <div class="demo-section">
+            <h2>Key Features</h2>
+            <ul class="feature-list">
+                <li><strong>Instant Synchronization:</strong> HTML/CSS changes sync to container in milliseconds</li>
+                <li><strong>No Full Rebuilds:</strong> Skip expensive image rebuilds for static file changes</li>
+                <li><strong>Native Docker:</strong> Uses Docker Compose Watch - no external tools needed</li>
+                <li><strong>Team Productivity:</strong> Every developer can test changes immediately</li>
+                <li><strong>Scalable Pattern:</strong> Same approach works for all microservices</li>
+            </ul>
+        </div>
+
+        <div class="demo-section">
+            <h2>Running the Demo</h2>
+            <ol style="margin-left: 1.5rem; line-height: 2;">
+                <li>Clone or download this project to your machine</li>
+                <li>Navigate to the project directory</li>
+                <li>Run: <code style="background: #f0f0f0; padding: 0.2rem 0.4rem; border-radius: 3px;">docker compose up --build</code></li>
+                <li>In another terminal, run: <code style="background: #f0f0f0; padding: 0.2rem 0.4rem; border-radius: 3px;">docker compose watch</code></li>
+                <li>Edit the HTML files and see changes immediately!</li>
+            </ol>
+        </div>
+
+        <div class="demo-section">
+            <h2>What Happens When You Edit Files</h2>
+            <p><strong>HTML/CSS files in ./html/:</strong></p>
+            <ul class="feature-list">
+                <li>Changes are synced to /usr/share/nginx/html in the container</li>
+                <li>Nginx serves updated files immediately (no restart needed)</li>
+                <li>Browser refresh shows your changes in seconds</li>
+            </ul>
+
+            <p style="margin-top: 1.5rem;"><strong>Dockerfile or dependencies:</strong></p>
+            <ul class="feature-list">
+                <li>Container is rebuilt automatically</li>
+                <li>Quick rebuild due to Docker layer caching</li>
+            </ul>
+        </div>
+
+        <div class="demo-section" style="background-color: #f0fdf4; border-color: #86efac;">
+            <h2 style="color: #16a34a;">Best Practices for Your Team</h2>
+            <ul class="feature-list">
+                <li><strong>Document the workflow:</strong> Keep your docker-compose.yml in version control with the watch section</li>
+                <li><strong>Consistent paths:</strong> Establish naming conventions for watch targets across all services</li>
+                <li><strong>Use .dockerignore:</strong> Exclude node_modules, vendor, etc. from rebuilds</li>
+                <li><strong>Layer caching:</strong> Order Dockerfile instructions to maximize cache hits</li>
+                <li><strong>Team onboarding:</strong> Document commands: <code style="background: white; padding: 0.2rem 0.4rem;">docker compose up --build</code> + <code style="background: white; padding: 0.2rem 0.4rem;">docker compose watch</code></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <footer>
+        <p>Docker Compose Watch Demo testeste • Ready for your microservices team</p>
+    </footer>
+</body>
+</html>

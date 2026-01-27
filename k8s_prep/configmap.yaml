@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: web-config
+  namespace: demo
+  labels:
+    app: web
+data:
+  ENVIRONMENT: "development"
+  FEATURE_FLAG_DEMO: "true"

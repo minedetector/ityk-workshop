@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: ityk-demo
+
+    ports:
+      - "8080:80"
+
+    volumes:
+      - ./html:/usr/share/nginx/html:ro
+
+    develop:
+      watch:
+        - action: sync
+          path: ./html
+          target: /usr/share/nginx/html
+        - action: rebuild
+          path: Dockerfile
+
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+        reservations:
+          cpus: '0.25'
+          memory: 128M
+
+    labels:
+      service: "web-frontend"
+      environment: "development"
+      purpose: "ityk-demo"
+      version: "1.0"
