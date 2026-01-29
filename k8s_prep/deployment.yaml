@@ -13,7 +13,7 @@ spec:
     matchLabels:
       app: web
   strategy:
-    type: rollingUpdate
+    type: RollingUpdate
     rollingUpdate:
       maxSurge: 1        # Max 4 pods during update (3+1)
       maxUnavailable: 0  # Always keep all 3 running
